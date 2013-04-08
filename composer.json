@@ -1,11 +1,25 @@
 {
     "name" : "ivan-novakov/zf2-shibboleth-authentication",
-    "description" : "Shibboleth authentication for Zend Framework 2",
     "type" : "library",
-    "license": "FreeBDS",
-
+    "description" : "Shibboleth authentication for Zend Framework 2",
+    "homepage" : "https://github.com/ivan-novakov/zf2-shibboleth-authentication",
+    "license" : "FreeBSD",
+    "authors" : [
+        {
+            "name" : "Ivan Novakov",
+            "homepage" : "http://novakov.cz/"
+        }
+    ],
     "require" : {
         "php" : ">=5.3.3",
         "zendframework/zendframework" : "2.*"
+    },
+    "autoload" : {
+        "psr-0" : {
+            "ZfcShib\\" : "src/"
+        },
+        "classmap" : [
+            "Module.php"
+        ]
     }
 }
