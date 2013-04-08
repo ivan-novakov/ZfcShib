@@ -2,6 +2,7 @@
     "name" : "ivan-novakov/zf2-shibboleth-authentication",
     "description" : "Shibboleth authentication for Zend Framework 2",
     "type" : "ZF2 module",
+    "licence": "FreeBDS",
 
     "require" : {
         "php" : ">=5.3.3",
