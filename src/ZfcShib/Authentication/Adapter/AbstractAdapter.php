@@ -41,6 +41,7 @@ abstract class AbstractAdapter implements AdapterInterface
      * 
      * @param array $config
      * @param array $serverVars
+     * @param IdentityFactoryInterface $identityFactory
      */
     public function __construct(array $config = array(), array $serverVars = null, IdentityFactoryInterface $identityFactory = null)
     {

@@ -3,7 +3,6 @@
 namespace ZfcShib\Authentication\Adapter;
 
 use Zend\Authentication\Result;
-use Zend\Authentication\Adapter\AdapterInterface;
 
 
 class Shibboleth extends AbstractAdapter
@@ -28,20 +27,20 @@ class Shibboleth extends AbstractAdapter
      * @var array
      */
     protected $userAttributeNames = array(
-        'eppn', 
-        'peristent-id', 
-        'affiliation', 
-        'entitlement', 
-        'cn', 
-        'sn', 
-        'givenName', 
-        'displayName', 
-        'mail', 
-        'telephoneNumber', 
-        'employeeNumber', 
-        'employeeType', 
-        'preferredLanguage', 
-        'o', 
+        'eppn',
+        'peristent-id',
+        'affiliation',
+        'entitlement',
+        'cn',
+        'sn',
+        'givenName',
+        'displayName',
+        'mail',
+        'telephoneNumber',
+        'employeeNumber',
+        'employeeType',
+        'preferredLanguage',
+        'o',
         'ou'
     );
 
@@ -51,11 +50,11 @@ class Shibboleth extends AbstractAdapter
      * @var array
      */
     protected $systemAttributeNames = array(
-        'Shib-Application-ID', 
-        'Shib-Identity-Provider', 
-        'Shib-Authentication-Instant', 
-        'Shib-Authentication-Method', 
-        'Shib-AuthnContext-Class', 
+        'Shib-Application-ID',
+        'Shib-Identity-Provider',
+        'Shib-Authentication-Instant',
+        'Shib-Authentication-Method',
+        'Shib-AuthnContext-Class',
         'Shib-Session-Index'
     );
 
@@ -72,7 +71,7 @@ class Shibboleth extends AbstractAdapter
         }
         
         $userData = array(
-            'system' => $this->extractAttributeValues($this->getSystemAttributeNames(), $this->getServerVars()), 
+            'system' => $this->extractAttributeValues($this->getSystemAttributeNames(), $this->getServerVars()),
             'user' => $this->extractAttributeValues($this->getUserAttributeNames(), $this->getServerVars())
         );
         
