@@ -12,7 +12,9 @@
     ],
     "require" : {
         "php" : ">=5.3.3",
-        "zendframework/zend-authentication" : "2.*"
+        "zendframework/zend-authentication" : "2.*",
+        "zendframework/zend-modulemanager": "2.*",
+        "zendframework/zend-loader": "2.*"
     },
     "autoload" : {
         "psr-0" : {
