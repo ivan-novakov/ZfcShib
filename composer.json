@@ -1,5 +1,5 @@
 {
-    "name" : "ivan-novakov/ZfcShib",
+    "name" : "ivan-novakov/zfc-shib",
     "type" : "library",
     "description" : "Shibboleth authentication for Zend Framework 2",
     "homepage" : "https://github.com/ivan-novakov/ZfcShib",
