@@ -1,6 +1,6 @@
-# Shibboleth authentication for Zend Framework 2
+# Shibboleth authentication for ZF2
 
-The module provides Shibboleth authentication as a standard ZF2 authentication adapter.
+The module provides Shibboleth authentication as a standard [Zend Framework 2](http://framework.zend.com/) authentication adapter.
 
 ## Requirements
 
@@ -10,11 +10,11 @@ The module provides Shibboleth authentication as a standard ZF2 authentication a
 
 Add the following requirement requirement to your composer.json file:
 
-    require: "ivan-novakov/zfc-shib": "dev-master"
+    "ivan-novakov/zfc-shib": "dev-master"
 
 And run `composer update`.
 
-You can use this as a ZF2 module in a ZF2 MVC application or just as a library.
+You can use this as a ZF2 module in a ZF2 MVC application or just as a library in any other type of application.
 
 ## Basic usage
 
