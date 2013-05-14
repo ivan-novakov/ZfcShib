@@ -12,7 +12,7 @@ class ArrayFactory implements IdentityFactoryInterface
 
 
     /**
-     * (non-PHPdoc)
+     * {@inheritdoc}
      * @see \ZfcShib\Authentication\Identity\IdentityFactoryInterface::createIdentity()
      */
     public function createIdentity(array $userData)

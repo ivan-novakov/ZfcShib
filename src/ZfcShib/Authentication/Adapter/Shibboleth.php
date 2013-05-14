@@ -5,13 +5,32 @@ namespace ZfcShib\Authentication\Adapter;
 use Zend\Authentication\Result;
 
 
+/**
+ * Shibboleth authentication adapter.
+ * 
+ * Extracts user's attributes from the environment and checks for user identity. If a Shibboleth session exists
+ * and the required user identity attribute is present, a success authentication result is created with 
+ * the user's identity information.
+ */
 class Shibboleth extends AbstractAdapter
 {
-
+    
+    /*
+     * Configuration options:
+     */
+    /**
+     * The name of the attribute containing the user's identity.
+     */
     const OPT_ID_ATTR_NAME = 'id_attr_name';
 
+    /**
+     * A list of user attribute names to be extracted. If not set, all attributes will be extracted.
+     */
     const OPT_USER_ATTR_NAMES = 'user_attr_names';
 
+    /**
+     * A list of system attribute names to be extracted. If not set, all attributes will be extracted.
+     */
     const OPT_SYSTEM_ATTR_NAMES = 'system_attr_names';
 
     /**
@@ -105,12 +124,21 @@ class Shibboleth extends AbstractAdapter
     }
 
 
+    /**
+     * Extracts user attribute values.
+     * 
+     * @return array
+     */
     public function getUserAttributeValues()
     {
         return $this->extractAttributeValues($this->getUserAttributeNames(), $this->getServerVars());
     }
 
 
+    /**
+     * Extracts system attribute values.
+     * @return array
+     */
     public function getSystemAttributeValues()
     {
         return $this->extractAttributeValues($this->getSystemAttributeNames(), $this->getServerVars());

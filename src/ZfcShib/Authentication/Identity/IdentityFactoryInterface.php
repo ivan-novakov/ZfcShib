@@ -3,6 +3,9 @@
 namespace ZfcShib\Authentication\Identity;
 
 
+/**
+ * Identity factory interface.
+ */
 interface IdentityFactoryInterface
 {
 
@@ -10,7 +13,7 @@ interface IdentityFactoryInterface
     /**
      * Creates and return a user identity based on the provided user data.
      * 
-     * @param unknown_type $identity
+     * @param array $userData
      * @return mixed
      */
     public function createIdentity(array $userData);
