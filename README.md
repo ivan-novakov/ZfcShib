@@ -14,11 +14,17 @@ Add the following requirement requirement to your composer.json file:
 
 And run `composer update`.
 
-You can use this as a ZF2 module in a ZF2 MVC application or just as a library in any other type of application.
+You can use this as a ZF2 module in a ZF2 MVC application or just as a library in any other type of application. If you want to use it as a module, add the module name 'ZfcShib' to your application configuration.
 
 ## Basic usage
 
-Generally you have to specify a list of attributes corresponding to the environment variable names to be extracted - the `user_attr_names` option. You must also specify the attribute which contains the user's identity - the `id_attr_name` option.
+The adapter accepts these configuration options:
+
+* `id_attr_name` (required) - the name of the attribute, which contains the user identity, for example `eppn`
+* `user_attr_names` (optional) - a list of user attribute names to be extracted and added to the result user identity. If not specified, all default attributes will be added.
+* `system_attr_names` (optional) - a list of system attribute names to be extracted and added to the result user identity (such as `Shib-Identity-Provider` for example). If not specified, all default attributes will be added.
+
+Example:
 
     $adapter = new \ZfcShib\Authentication\Adapter\Shibboleth(array(
         'id_attr_name' => 'eppn', 
@@ -40,7 +46,7 @@ The `$identity` array then contains two sub-arrays:
 * `system` - contains system attributes
 * `user` - contains the required user attributes `eppn`, `cn` and `mail`.
 
-For example:
+The `$identity` variable will contain:
 
     Array
     (
