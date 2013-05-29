@@ -88,7 +88,7 @@ By default, the identity is returned as an array. But you can make the adapter r
     
 ## License
 
-* [FreeBSD](http://debug.cz/license/freebsd)
+* [BSD 3 Clause](http://debug.cz/license/bsd-3-clause)
   
 
 ## Links
