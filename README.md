@@ -10,7 +10,7 @@ The module provides Shibboleth authentication as a standard [Zend Framework 2](h
 
 Add the following requirement requirement to your composer.json file:
 
-    "ivan-novakov/zfc-shib": "dev-master"
+    "ivan-novakov/zfc-shib": "1.*"
 
 And run `composer update`.
 
