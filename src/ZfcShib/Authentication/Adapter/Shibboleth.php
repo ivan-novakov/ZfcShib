@@ -89,12 +89,10 @@ class Shibboleth extends AbstractAdapter
             return $this->createFailureAuthenticationResult(Result::FAILURE_IDENTITY_NOT_FOUND, sprintf("User identity attribute '%s' not found", $this->getIdAttributeName()));
         }
         
-        $userData = array(
-            'system' => $this->extractAttributeValues($this->getSystemAttributeNames(), $this->getServerVars()),
-            'user' => $this->extractAttributeValues($this->getUserAttributeNames(), $this->getServerVars())
-        );
+        $userData = $this->extractAttributeValues($this->getUserAttributeNames(), $this->getServerVars());
+        $systemData = $this->extractAttributeValues($this->getSystemAttributeNames(), $this->getServerVars());
         
-        return $this->createSuccessfulAuthenticationResult($userData);
+        return $this->createSuccessfulAuthenticationResult($userData, $systemData);
     }
 
 

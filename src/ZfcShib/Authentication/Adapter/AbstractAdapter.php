@@ -6,6 +6,7 @@ use Zend\Authentication\Result;
 use Zend\Authentication\Adapter\AdapterInterface;
 use ZfcShib\Authentication\Identity\IdentityFactoryInterface;
 use ZfcShib\Authentication\Identity\ArrayFactory;
+use ZfcShib\Authentication\Identity\Data;
 
 
 /**
@@ -167,10 +168,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param array $userData
      * @return mixed
      */
-    public function createIdentity(array $userData)
+    public function createIdentity(Data $identityData)
     {
-        return $this->getIdentityFactory()
-            ->createIdentity($userData);
+        return $this->getIdentityFactory()->createIdentity($identityData);
     }
 
 
@@ -178,11 +178,13 @@ abstract class AbstractAdapter implements AdapterInterface
      * Creates a success response object with the user identity contained in the provided data.
      * 
      * @param array $userData
+     * @param array $systemData
      * @return \Zend\Authentication\Result
      */
-    protected function createSuccessfulAuthenticationResult(array $userData)
+    protected function createSuccessfulAuthenticationResult(array $userData, array $systemData = array())
     {
-        return $this->createAuthenticationResult(Result::SUCCESS, $this->createIdentity($userData));
+        $identityData = $this->createIdentityData($userData, $systemData);
+        return $this->createAuthenticationResult(Result::SUCCESS, $this->createIdentity($identityData));
     }
 
 
@@ -215,5 +217,18 @@ abstract class AbstractAdapter implements AdapterInterface
     protected function createAuthenticationResult($code = Result::FAILURE, $identity = null, array $messages = array())
     {
         return new Result($code, $identity, $messages);
+    }
+
+
+    /**
+     * Creates an identity value object based on the user and system data.
+     * 
+     * @param array $userData
+     * @param array $systemData
+     * @return Data
+     */
+    protected function createIdentityData(array $userData, array $systemData = array())
+    {
+        return new Data($userData, $systemData);
     }
 }

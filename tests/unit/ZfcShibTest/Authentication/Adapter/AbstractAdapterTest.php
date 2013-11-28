@@ -21,8 +21,7 @@ class AbstractAdapterTest extends \PHPUnit_Framework_TestCase
         
         $this->assertSame(array(), $adapter->getConfig());
         $this->assertSame(array(), $adapter->getServerVars());
-        $this->assertInstanceOf('ZfcShib\Authentication\Identity\IdentityFactoryInterface', 
-            $adapter->getIdentityFactory());
+        $this->assertInstanceOf('ZfcShib\Authentication\Identity\IdentityFactoryInterface', $adapter->getIdentityFactory());
     }
 
 
@@ -125,9 +124,7 @@ class AbstractAdapterTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateIdentity()
     {
-        $userData = array(
-            'username' => 'foo'
-        );
+        $identityData = $this->getIdentityDataMock();
         $identity = array(
             'identity' => 'foo'
         );
@@ -135,13 +132,13 @@ class AbstractAdapterTest extends \PHPUnit_Framework_TestCase
         $identityFactory = $this->getMock('ZfcShib\Authentication\Identity\IdentityFactoryInterface');
         $identityFactory->expects($this->once())
             ->method('createIdentity')
-            ->with($userData)
+            ->with($identityData)
             ->will($this->returnValue($identity));
         
         $adapter = $this->createAdapter();
         $adapter->setIdentityFactory($identityFactory);
         
-        $this->assertSame($identity, $adapter->createIdentity($userData));
+        $this->assertSame($identity, $adapter->createIdentity($identityData));
     }
 
 
@@ -151,16 +148,23 @@ class AbstractAdapterTest extends \PHPUnit_Framework_TestCase
      * @param IdentityFactoryInterface $identityFactory
      * @return AbstractAdapter
      */
-    protected function createAdapter(array $config = array(), array $serverVars = array(), 
-        IdentityFactoryInterface $identityFactory = null)
+    protected function createAdapter(array $config = array(), array $serverVars = array(), IdentityFactoryInterface $identityFactory = null)
     {
-        $adapter = $this->getMockForAbstractClass('ZfcShib\Authentication\Adapter\AbstractAdapter', 
-            array(
-                $config, 
-                $serverVars, 
-                $identityFactory
-            ));
+        $adapter = $this->getMockForAbstractClass('ZfcShib\Authentication\Adapter\AbstractAdapter', array(
+            $config,
+            $serverVars,
+            $identityFactory
+        ));
         
         return $adapter;
+    }
+
+
+    protected function getIdentityDataMock()
+    {
+        $data = $this->getMockBuilder('ZfcShib\Authentication\Identity\Data')
+            ->disableOriginalConstructor()
+            ->getMock();
+        return $data;
     }
 }
