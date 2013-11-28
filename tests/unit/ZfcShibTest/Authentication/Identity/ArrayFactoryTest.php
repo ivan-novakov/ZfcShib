@@ -11,11 +11,27 @@ class ArrayFactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateIdentity()
     {
-        $factory = new ArrayFactory();
         $userData = array(
             'username' => 'foo'
         );
+        $systemData = array(
+            'session' => 'bar'
+        );
         
-        $this->assertSame($userData, $factory->createIdentity($userData));
+        $identityData = $this->getMockBuilder('ZfcShib\Authentication\Identity\Data')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $identityData->expects($this->once())
+            ->method('getUserData')
+            ->will($this->returnValue($userData));
+        $identityData->expects($this->once())
+            ->method('getSystemData')
+            ->will($this->returnValue($systemData));
+        
+        $factory = new ArrayFactory();
+        $identity = $factory->createIdentity($identityData);
+        
+        $this->assertSame($userData, $identity['user']);
+        $this->assertSame($systemData, $identity['system']);
     }
 }

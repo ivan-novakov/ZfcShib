@@ -16,5 +16,5 @@ interface IdentityFactoryInterface
      * @param array $userData
      * @return mixed
      */
-    public function createIdentity(array $userData);
+    public function createIdentity(Data $identityData);
 }

@@ -15,8 +15,11 @@ class ArrayFactory implements IdentityFactoryInterface
      * {@inheritdoc}
      * @see \ZfcShib\Authentication\Identity\IdentityFactoryInterface::createIdentity()
      */
-    public function createIdentity(array $userData)
+    public function createIdentity(Data $identityData)
     {
-        return $userData;
+        return array(
+            'user' => $identityData->getUserData(),
+            'system' => $identityData->getSystemData()
+        );
     }
 }

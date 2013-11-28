@@ -42,7 +42,7 @@ class ShibbolethTest extends \PHPUnit_Framework_TestCase
         
         $this->assertInstanceOf('Zend\Authentication\Result', $result);
         $this->assertTrue($result->isValid());
-        $this->assertSame(array(
+        $this->assertEquals(array(
             'system' => Array(
                 'systemAttr' => 'systemValue'
             ), 
