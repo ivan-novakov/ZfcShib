@@ -1,5 +1,7 @@
 # Shibboleth authentication for ZF2
 
+[![Dependency Status](https://www.versioneye.com/user/projects/529a011e632bac5a0a000013/badge.png)](https://www.versioneye.com/user/projects/529a011e632bac5a0a000013)
+
 The module provides Shibboleth authentication as a standard [Zend Framework 2](http://framework.zend.com/) 
 authentication adapter.
 
