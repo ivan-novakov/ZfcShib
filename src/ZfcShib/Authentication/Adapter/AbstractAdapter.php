@@ -165,7 +165,7 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * Creates and returns the user identity based on the provided user data.
      * 
-     * @param array $userData
+     * @param array $identityData
      * @return mixed
      */
     public function createIdentity(Data $identityData)
